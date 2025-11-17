@@ -14,7 +14,7 @@ export default function DashboardPage() {
   const [statusFilter, setStatusFilter] = useState("");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5); // entries per page
+  const [pageSize, setPageSize] = useState(5);
   const [loading, setLoading] = useState(false);
 
   const totalPages = Math.ceil(total / pageSize);
@@ -30,7 +30,7 @@ export default function DashboardPage() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gray-100 text-gray-900 p-6">
+      <div className="min-h-screen bg-gray-100 text-gray-900 w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 max-w-360 mx-auto py-12">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-3">
           <input
@@ -39,7 +39,7 @@ export default function DashboardPage() {
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
-              setCurrentPage(1); // reset page on search
+              setCurrentPage(1);
             }}
             className="border border-gray-300 p-3 rounded-lg w-full md:w-1/3 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
@@ -47,7 +47,7 @@ export default function DashboardPage() {
             value={statusFilter}
             onChange={(e) => {
               setStatusFilter(e.target.value);
-              setCurrentPage(1); // reset page on filter
+              setCurrentPage(1);
             }}
             className="border border-gray-300 p-3 rounded-lg w-full md:w-1/4 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
@@ -83,7 +83,6 @@ export default function DashboardPage() {
 
             {/* Pagination + Page Size */}
             <div className="flex flex-col md:flex-row justify-between items-center mt-6 gap-3">
-              {/* Page size selector */}
               <div className="flex items-center gap-2">
                 <span className="text-gray-700">Show</span>
                 <select
@@ -101,9 +100,7 @@ export default function DashboardPage() {
                 <span className="text-gray-700">per page</span>
               </div>
 
-              {/* Pagination controls */}
               <div className="flex items-center gap-2 flex-wrap">
-                {/* Prev */}
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
                   disabled={currentPage === 1}
@@ -112,7 +109,6 @@ export default function DashboardPage() {
                   Prev
                 </button>
 
-                {/* Page numbers */}
                 {[...Array(totalPages)].map((_, i) => {
                   const pageNum = i + 1;
                   return (
@@ -130,7 +126,6 @@ export default function DashboardPage() {
                   );
                 })}
 
-                {/* Next */}
                 <button
                   onClick={() =>
                     setCurrentPage((p) => Math.min(p + 1, totalPages))
@@ -142,7 +137,6 @@ export default function DashboardPage() {
                 </button>
               </div>
 
-              {/* Total items */}
               <div className="text-gray-700">
                 Total <strong>{total}</strong> items
               </div>
