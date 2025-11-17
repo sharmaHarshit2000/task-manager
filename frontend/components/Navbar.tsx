@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
   const router = useRouter();
-const { isLoggedIn, name, logout, loading } = useAuth();
+  const { isLoggedIn, name, logout, loading } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -50,7 +50,9 @@ const { isLoggedIn, name, logout, loading } = useAuth();
               </div>
             ) : isLoggedIn ? (
               <>
-                <span className="px-2 font-medium">Hello, {name}</span>
+                <span className="px-2 font-medium">
+                  Hello, {name ? name.split(" ")[0] : ""}
+                </span>{" "}
                 <button
                   onClick={handleLogout}
                   className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-md transition duration-200"
