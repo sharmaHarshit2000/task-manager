@@ -3,17 +3,24 @@
 import { ReactNode } from "react";
 import Navbar from "../components/Navbar";
 import { TaskProvider } from "../context/TaskContext";
-import { AuthProvider } from "../context/AuthContext"; // add this
-import './globals.css';
+import { AuthProvider } from "../context/AuthContext";
+import "./globals.css";
+import Head from "next/head";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900 min-h-screen">
-        <AuthProvider> 
+      <Head>
+        <title>Task Manager</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <body className="bg-white text-gray-900 min-h-screen">
+        <AuthProvider>
           <TaskProvider>
             <Navbar />
-            <main className="p-4 max-w-4xl mx-auto">{children}</main>
+            <main className="px-2 sm:px-4 lg:px-8 xl:px-16 2xl:px-24 mx-auto">
+              {children}
+            </main>
           </TaskProvider>
         </AuthProvider>
       </body>
