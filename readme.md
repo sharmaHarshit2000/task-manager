@@ -1,12 +1,12 @@
 # Task Manager
 
-[Live Demo](https://your-live-site-link.com) | [GitHub Repository](https://github.com/sharmaHarshit2000/task-manager)
+[Live Demo](https://task-manager-five-sepia-74.vercel.app) | [GitHub Repository](https://github.com/sharmaHarshit2000/task-manager)
 
 ---
 
 ## Description
 
-Task Manager is a full-stack application built with **Next.js** (frontend) and **Node.js/Express** (backend) with **Prisma** as ORM and **PostgreSQL** database. It allows users to register, login, create, update, delete, and toggle tasks.
+Task Manager is a full-stack application built with **Next.js** (frontend) and **Node.js/Express** (backend) with **Prisma** as ORM and **PostgreSQL** database. It allows users to register, login, create, update, delete, and toggle tasks with pagination support.
 
 ---
 
