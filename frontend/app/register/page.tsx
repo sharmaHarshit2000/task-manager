@@ -23,7 +23,11 @@ export default function RegisterPage() {
     e.preventDefault();
     setError("");
 
-    if (password.length < MIN_PASSWORD_LENGTH) {
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+
+    if (trimmedPassword.length < MIN_PASSWORD_LENGTH) {
       setError(
         `Password must be at least ${MIN_PASSWORD_LENGTH} characters long.`
       );
@@ -33,9 +37,13 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      const res = await api.post("/auth/register", { name, email, password });
+      const res = await api.post("/auth/register", {
+        name: trimmedName,
+        email: trimmedEmail,
+        password: trimmedPassword,
+      });
       login(res.data.token, "", res.data.user.name);
-      router.push("/"); 
+      router.push("/");
     } catch (err: any) {
       setError(err.response?.data?.message || "Registration failed");
     } finally {
